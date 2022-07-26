@@ -48,4 +48,16 @@ public class Purchase extends BaseEntity {
 
     @OneToMany(mappedBy = "purchase", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private final Set<PurchaseContent> purchaseContents = new HashSet<>();
+
+    public Purchase setVendor(Vendor vendor) {
+        this.vendor = vendor;
+        return this;
+    }
+
+    public Purchase update(Purchase update, Vendor vendor) {
+        this.vendor = vendor;
+        this.transactionDate = update.transactionDate;
+        this.description = update.description;
+        return this;
+    }
 }

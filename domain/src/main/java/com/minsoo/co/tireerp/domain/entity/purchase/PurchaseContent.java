@@ -2,7 +2,6 @@ package com.minsoo.co.tireerp.domain.entity.purchase;
 
 import com.minsoo.co.tireerp.domain.entity.BaseEntity;
 import com.minsoo.co.tireerp.domain.entity.stock.Stock;
-import com.minsoo.co.tireerp.domain.entity.tire.TireDot;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,8 +17,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import static javax.persistence.FetchType.LAZY;
 
 @Getter
 @Builder
@@ -38,10 +35,6 @@ public class PurchaseContent extends BaseEntity {
     @JoinColumn(name = "purchase_id", referencedColumnName = "purchase_id")
     private Purchase purchase;
 
-    @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "tire_dot_id", nullable = false)
-    private TireDot tireDot;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "stock_id", referencedColumnName = "stock_id")
     private Stock stock;
@@ -51,4 +44,21 @@ public class PurchaseContent extends BaseEntity {
 
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
+
+    public PurchaseContent setPurchase(Purchase purchase) {
+        this.purchase = purchase;
+        return this;
+    }
+
+    public PurchaseContent setStock(Stock stock) {
+        this.stock = stock;
+        return this;
+    }
+
+    public PurchaseContent update(PurchaseContent update, Stock stock) {
+        this.stock = stock;
+        this.price = update.price;
+        this.quantity = update.quantity;
+        return this;
+    }
 }

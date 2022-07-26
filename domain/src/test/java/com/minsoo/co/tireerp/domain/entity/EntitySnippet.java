@@ -5,10 +5,14 @@ import com.minsoo.co.tireerp.domain.entity.management.Brand;
 import com.minsoo.co.tireerp.domain.entity.management.Pattern;
 import com.minsoo.co.tireerp.domain.entity.management.Vendor;
 import com.minsoo.co.tireerp.domain.entity.management.Warehouse;
+import com.minsoo.co.tireerp.domain.entity.purchase.Purchase;
+import com.minsoo.co.tireerp.domain.entity.purchase.PurchaseContent;
 import com.minsoo.co.tireerp.domain.entity.stock.Stock;
 import com.minsoo.co.tireerp.domain.entity.tire.Tire;
 import com.minsoo.co.tireerp.domain.entity.tire.TireDot;
 import com.minsoo.co.tireerp.domain.entity.tire.TireMemo;
+
+import java.time.LocalDate;
 
 public class EntitySnippet {
 
@@ -197,6 +201,32 @@ public class EntitySnippet {
                 .nickname("테스트 재고2")
                 .quantity(20)
                 .lock(true)
+                .build();
+    }
+
+    public static Purchase purchase() {
+        return Purchase.builder()
+                .vendor(null)
+                .transactionDate(LocalDate.now())
+                .description("매입 테스트 용도")
+                .build();
+    }
+
+    public static PurchaseContent purchaseContent() {
+        return PurchaseContent.builder()
+                .purchase(null)
+                .stock(null)
+                .price(1000L)
+                .quantity(10)
+                .build();
+    }
+
+    public static PurchaseContent purchaseContent2() {
+        return PurchaseContent.builder()
+                .purchase(null)
+                .stock(null)
+                .price(2000L)
+                .quantity(10)
                 .build();
     }
 }
