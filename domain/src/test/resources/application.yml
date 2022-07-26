@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=MySQL;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      true
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      dialect: org.hibernate.dialect.MariaDBDialect
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        discriminator:
+          ignore_explicit_for_joined: false
+        format_sql: true
+        default_batch_fetch_size: 500
+        globally_quoted_identifiers: true
+    open-in-view: false
+
+logging.level:
+  org.hibernate.SQL: debug

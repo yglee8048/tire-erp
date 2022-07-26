@@ -1,0 +1,6 @@
+rootProject.name = 'tire-erp'
+
+include 'core'
+include 'domain'
+include 'admin-server'
+include 'client-server'
