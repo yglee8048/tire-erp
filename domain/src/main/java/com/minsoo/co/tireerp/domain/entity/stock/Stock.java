@@ -48,4 +48,24 @@ public class Stock extends BaseEntity {
 
     @Column(name = "is_lock", nullable = false)
     private Boolean lock;
+
+    public Stock setTireDot(TireDot tireDot) {
+        this.tireDot = tireDot;
+        return this;
+    }
+
+    public Stock setWarehouse(Warehouse warehouse) {
+        this.warehouse = warehouse;
+        return this;
+    }
+
+    public Stock addQuantity(Integer quantity) {
+        this.quantity += quantity;
+        return this;
+    }
+
+    public Stock setLock(Boolean lock) {
+        this.lock = lock;
+        return this;
+    }
 }

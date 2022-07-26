@@ -5,6 +5,7 @@ import com.minsoo.co.tireerp.domain.entity.management.Brand;
 import com.minsoo.co.tireerp.domain.entity.management.Pattern;
 import com.minsoo.co.tireerp.domain.entity.management.Vendor;
 import com.minsoo.co.tireerp.domain.entity.management.Warehouse;
+import com.minsoo.co.tireerp.domain.entity.stock.Stock;
 import com.minsoo.co.tireerp.domain.entity.tire.Tire;
 import com.minsoo.co.tireerp.domain.entity.tire.TireDot;
 import com.minsoo.co.tireerp.domain.entity.tire.TireMemo;
@@ -179,6 +180,22 @@ public class EntitySnippet {
         return TireMemo.builder()
                 .tire(null)
                 .memo("memo2")
+                .lock(true)
+                .build();
+    }
+
+    public static Stock stock() {
+        return Stock.builder()
+                .nickname("테스트 재고")
+                .quantity(10)
+                .lock(false)
+                .build();
+    }
+
+    public static Stock stock2() {
+        return Stock.builder()
+                .nickname("테스트 재고2")
+                .quantity(20)
                 .lock(true)
                 .build();
     }
