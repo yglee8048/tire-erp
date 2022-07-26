@@ -1,7 +1,7 @@
 package com.minsoo.co.tireerp.adminserver.model.response.client;
 
 import com.minsoo.co.tireerp.adminserver.model.BusinessInfoDTO;
-import com.minsoo.co.tireerp.core.entity.client.ClientCompany;
+import com.minsoo.co.tireerp.domain.entity.client.ClientCompany;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

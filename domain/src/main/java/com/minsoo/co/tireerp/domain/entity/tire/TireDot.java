@@ -1,7 +1,6 @@
 package com.minsoo.co.tireerp.domain.entity.tire;
 
 import com.minsoo.co.tireerp.domain.entity.BaseEntity;
-import com.minsoo.co.tireerp.domain.entity.purchase.PurchaseContent;
 import com.minsoo.co.tireerp.domain.entity.stock.Stock;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -45,9 +44,6 @@ public class TireDot extends BaseEntity {
 
     @OneToMany(mappedBy = "tireDot", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private final Set<Stock> stocks = new HashSet<>();
-
-    @OneToMany(mappedBy = "tireDot", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private final Set<PurchaseContent> purchaseContents = new HashSet<>();
 
     public TireDot setTire(Tire tire) {
         this.tire = tire;

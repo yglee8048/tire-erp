@@ -14,7 +14,7 @@ public abstract class SystemMessage {
     public static final String METHOD_ARGUMENT_INVALID = "잘못된 요청입니다. 누락되었거나, 부적절한 요청 내용이 존재합니다.";
 
     public static final String DUPLICATED_NICKNAME = "재고의 별칭은 중복 될 수 없습니다.";
-    public static final String DUPLICATED_USER_ID = "계정의 ID 는 중복 될 수 없습니다.";
+    public static final String DUPLICATED_USERNAME = "계정의 ID 는 중복 될 수 없습니다.";
     public static final String DUPLICATED_NAME = "이름은 중복될 수 없습니다.";
     public static final String DUPLICATED_TIRE_CODE = "타이어 ID 는 중복 될 수 없습니다.";
     public static final String DUPLICATED_TIRE_DOT = "타이어 DOT 는 중복 될 수 없습니다.";

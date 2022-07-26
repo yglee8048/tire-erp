@@ -1,6 +1,8 @@
 package com.minsoo.co.tireerp.domain.entity;
 
+import com.minsoo.co.tireerp.domain.constant.AccountRole;
 import com.minsoo.co.tireerp.domain.constant.PatternSeason;
+import com.minsoo.co.tireerp.domain.entity.admin.Admin;
 import com.minsoo.co.tireerp.domain.entity.management.Brand;
 import com.minsoo.co.tireerp.domain.entity.management.Pattern;
 import com.minsoo.co.tireerp.domain.entity.management.Vendor;
@@ -227,6 +229,30 @@ public class EntitySnippet {
                 .stock(null)
                 .price(2000L)
                 .quantity(10)
+                .build();
+    }
+
+    public static Admin admin() {
+        return Admin.builder()
+                .role(AccountRole.ROOT)
+                .username("test")
+                .password("test")
+                .name("test_user")
+                .email("test@test.com")
+                .phoneNumber("010-1234-5678")
+                .description("테스트 용도 관리자")
+                .build();
+    }
+
+    public static Admin admin2() {
+        return Admin.builder()
+                .role(AccountRole.ADMIN)
+                .username("test2")
+                .password("test")
+                .name("test_user")
+                .email("test@test.com")
+                .phoneNumber("010-1234-5678")
+                .description("테스트 용도 관리자")
                 .build();
     }
 }

@@ -6,6 +6,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.util.StringUtils;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -54,4 +55,17 @@ public class Account extends BaseEntity {
 
     @Column(name = "phone_number")
     protected String phoneNumber;
+
+    protected Account update(Account update) {
+        this.username = update.username;
+        if (StringUtils.hasText(update.password)) {
+            this.password = update.password;
+        }
+        this.role = update.role;
+        this.description = update.description;
+        this.name = update.name;
+        this.email = update.email;
+        this.phoneNumber = update.phoneNumber;
+        return this;
+    }
 }
