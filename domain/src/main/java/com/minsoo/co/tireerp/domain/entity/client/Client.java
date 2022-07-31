@@ -1,26 +1,20 @@
 package com.minsoo.co.tireerp.domain.entity.client;
 
+import com.minsoo.co.tireerp.core.constant.SystemMessage;
+import com.minsoo.co.tireerp.core.exception.BadRequestException;
+import com.minsoo.co.tireerp.domain.constant.AccountRole;
 import com.minsoo.co.tireerp.domain.constant.AccountType;
 import com.minsoo.co.tireerp.domain.entity.Address;
 import com.minsoo.co.tireerp.domain.entity.account.Account;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
-@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
 @Entity
 @Table(name = "client")
 @DiscriminatorValue(AccountType.CLIENT)
@@ -32,4 +26,25 @@ public class Client extends Account {
 
     @Embedded
     private Address address;
+
+    @Builder
+    public Client(String username, String password, AccountRole role, String description, String name, String email, String phoneNumber, ClientCompany clientCompany, Address address) {
+        super(null, username, password, role, description, name, email, phoneNumber);
+        if (role.isAdmin()) {
+            throw new BadRequestException(SystemMessage.INVALID_ROLE);
+        }
+        this.clientCompany = clientCompany;
+        this.address = address;
+    }
+
+    public Client setClientCompany(ClientCompany clientCompany) {
+        this.clientCompany = clientCompany;
+        return this;
+    }
+
+    public Client update(Client update) {
+        super.update(update);
+        this.address = update.address;
+        return this;
+    }
 }

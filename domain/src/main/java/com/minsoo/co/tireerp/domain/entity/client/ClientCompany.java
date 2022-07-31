@@ -3,22 +3,9 @@ package com.minsoo.co.tireerp.domain.entity.client;
 import com.minsoo.co.tireerp.domain.entity.BaseEntity;
 import com.minsoo.co.tireerp.domain.entity.BusinessInfo;
 import com.minsoo.co.tireerp.domain.entity.rank.Rank;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Builder
@@ -33,16 +20,29 @@ public class ClientCompany extends BaseEntity {
     @Column(name = "client_company_id")
     private Long id;
 
-    @Column(name = "name")
-    private String name;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "rank_id", referencedColumnName = "rank_id")
     private Rank rank;
+
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "description")
     private String description;
 
     @Embedded
     private BusinessInfo businessInfo;
+
+    public ClientCompany setRank(Rank rank) {
+        this.rank = rank;
+        return this;
+    }
+
+    public ClientCompany update(ClientCompany update, Rank rank) {
+        this.rank = rank;
+        this.name = update.name;
+        this.description = update.description;
+        this.businessInfo = update.businessInfo;
+        return this;
+    }
 }
