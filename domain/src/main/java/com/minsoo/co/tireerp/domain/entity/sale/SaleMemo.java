@@ -1,21 +1,9 @@
 package com.minsoo.co.tireerp.domain.entity.sale;
 
 import com.minsoo.co.tireerp.domain.entity.BaseEntity;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Builder
@@ -42,4 +30,16 @@ public class SaleMemo extends BaseEntity {
 
     @Column(name = "is_lock")
     private Boolean lock;
+
+    public SaleMemo setSale(Sale sale) {
+        this.sale = sale;
+        return this;
+    }
+
+    public SaleMemo update(SaleMemo update) {
+        this.memo = update.memo;
+        this.admin = update.admin;
+        this.lock = update.lock;
+        return this;
+    }
 }

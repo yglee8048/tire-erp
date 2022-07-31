@@ -5,33 +5,17 @@ import com.minsoo.co.tireerp.domain.constant.SaleStatus;
 import com.minsoo.co.tireerp.domain.entity.BaseEntity;
 import com.minsoo.co.tireerp.domain.entity.client.ClientCompany;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
 @Getter
-@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
 @Entity
 @Table(name = "sale")
 public class Sale extends BaseEntity {
@@ -71,4 +55,30 @@ public class Sale extends BaseEntity {
 
     @OneToMany(mappedBy = "sale", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private final Set<SaleMemo> saleMemos = new HashSet<>();
+
+    @Builder
+    public Sale(ClientCompany clientCompany, SaleSource source, LocalDate transactionDate, LocalDate releaseDate, LocalDate desiredDeliveryDate) {
+        this.clientCompany = clientCompany;
+        this.source = source;
+        this.status = SaleStatus.REQUESTED;
+        this.transactionDate = transactionDate;
+        this.releaseDate = releaseDate;
+        this.desiredDeliveryDate = desiredDeliveryDate;
+    }
+
+    public Sale setClientCompany(ClientCompany clientCompany) {
+        this.clientCompany = clientCompany;
+        return this;
+    }
+
+    public Sale update(Sale update, ClientCompany clientCompany, Delivery delivery) {
+        this.clientCompany = clientCompany;
+        this.delivery = delivery;
+        this.source = update.source;
+        this.status = update.status;
+        this.transactionDate = update.transactionDate;
+        this.releaseDate = update.releaseDate;
+        this.desiredDeliveryDate = update.desiredDeliveryDate;
+        return this;
+    }
 }

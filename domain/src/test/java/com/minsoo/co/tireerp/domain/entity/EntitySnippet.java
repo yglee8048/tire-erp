@@ -1,7 +1,9 @@
 package com.minsoo.co.tireerp.domain.entity;
 
 import com.minsoo.co.tireerp.domain.constant.AccountRole;
+import com.minsoo.co.tireerp.domain.constant.DeliveryOption;
 import com.minsoo.co.tireerp.domain.constant.PatternSeason;
+import com.minsoo.co.tireerp.domain.constant.SaleSource;
 import com.minsoo.co.tireerp.domain.entity.admin.Admin;
 import com.minsoo.co.tireerp.domain.entity.client.Client;
 import com.minsoo.co.tireerp.domain.entity.client.ClientCompany;
@@ -13,6 +15,8 @@ import com.minsoo.co.tireerp.domain.entity.purchase.Purchase;
 import com.minsoo.co.tireerp.domain.entity.purchase.PurchaseContent;
 import com.minsoo.co.tireerp.domain.entity.rank.Rank;
 import com.minsoo.co.tireerp.domain.entity.rank.RankDotPrice;
+import com.minsoo.co.tireerp.domain.entity.sale.Delivery;
+import com.minsoo.co.tireerp.domain.entity.sale.Sale;
 import com.minsoo.co.tireerp.domain.entity.stock.Stock;
 import com.minsoo.co.tireerp.domain.entity.tire.Tire;
 import com.minsoo.co.tireerp.domain.entity.tire.TireDot;
@@ -333,6 +337,50 @@ public class EntitySnippet {
                 .phoneNumber("010-1234-5678")
                 .description("테스트 용도 고객")
                 .address(address())
+                .build();
+    }
+
+    public static Sale sale() {
+        return Sale.builder()
+                .clientCompany(null)
+                .source(SaleSource.MANUAL)
+                .transactionDate(LocalDate.now())
+                .releaseDate(LocalDate.now())
+                .desiredDeliveryDate(LocalDate.now())
+                .build();
+    }
+
+    public static Sale sale2() {
+        return Sale.builder()
+                .clientCompany(null)
+                .source(SaleSource.ONLINE)
+                .transactionDate(LocalDate.now())
+                .releaseDate(LocalDate.now())
+                .desiredDeliveryDate(LocalDate.now())
+                .build();
+    }
+
+    public static Delivery delivery(){
+        return Delivery.builder()
+                .sale(null)
+                .recipientName("tester")
+                .address(address())
+                .recipientPhoneNumber("010-1234-5678")
+                .deliveryOption(DeliveryOption.PACKAGE)
+                .deliveryCompany("test company")
+                .invoiceNumber("1234-5678")
+                .build();
+    }
+
+    public static Delivery delivery2(){
+        return Delivery.builder()
+                .sale(null)
+                .recipientName("tester2")
+                .address(address())
+                .recipientPhoneNumber("010-1234-5678")
+                .deliveryOption(DeliveryOption.PACKAGE)
+                .deliveryCompany("test company")
+                .invoiceNumber("1234-5678")
                 .build();
     }
 }

@@ -19,6 +19,7 @@ public abstract class SystemMessage {
     public static final String DUPLICATED_TIRE_CODE = "타이어 ID 는 중복 될 수 없습니다.";
     public static final String DUPLICATED_TIRE_DOT = "타이어 DOT 는 중복 될 수 없습니다.";
 
+    public static final String ALREADY_EXIST = "이미 존재하는 데이터입니다.";
     public static final String ALREADY_CONFIRMED = "이미 확정된 데이터입니다.";
 
     public static final String DISCREPANCY_STOCK_QUANTITY = "재고의 수량이 일치하지 않습니다.";

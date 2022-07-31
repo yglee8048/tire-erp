@@ -3,23 +3,9 @@ package com.minsoo.co.tireerp.domain.entity.sale;
 import com.minsoo.co.tireerp.domain.constant.DeliveryOption;
 import com.minsoo.co.tireerp.domain.entity.Address;
 import com.minsoo.co.tireerp.domain.entity.BaseEntity;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Builder
@@ -33,9 +19,6 @@ public class Delivery extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "delivery_id")
     private Long id;
-
-    @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
-    private Sale sale;
 
     @Column(name = "recipient_name")
     private String recipientName;
@@ -55,4 +38,17 @@ public class Delivery extends BaseEntity {
 
     @Column(name = "invoice_number")
     private String invoiceNumber;
+
+    @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
+    private Sale sale;
+
+    public Delivery update(Delivery update) {
+        this.recipientName = update.recipientName;
+        this.address = update.address;
+        this.recipientPhoneNumber = update.recipientPhoneNumber;
+        this.deliveryOption = update.deliveryOption;
+        this.deliveryCompany = update.deliveryCompany;
+        this.invoiceNumber = update.invoiceNumber;
+        return this;
+    }
 }
