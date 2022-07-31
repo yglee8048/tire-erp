@@ -4,4 +4,6 @@ import com.minsoo.co.tireerp.domain.entity.rank.Rank;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RankRepository extends JpaRepository<Rank, Long> {
+
+    boolean existsByName(String name);
 }

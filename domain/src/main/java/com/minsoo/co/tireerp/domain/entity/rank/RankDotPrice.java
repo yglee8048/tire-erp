@@ -2,21 +2,9 @@ package com.minsoo.co.tireerp.domain.entity.rank;
 
 import com.minsoo.co.tireerp.domain.entity.BaseEntity;
 import com.minsoo.co.tireerp.domain.entity.tire.TireDot;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Builder
@@ -39,6 +27,21 @@ public class RankDotPrice extends BaseEntity {
     @JoinColumn(name = "tire_dot_id", referencedColumnName = "tire_dot_id")
     private TireDot tireDot;
 
-    @Column(name = "discount_rate")
-    private Float discountRate;
+    @Column(name = "discounted_rice")
+    private Long discountedPrice;
+
+    public RankDotPrice setRank(Rank rank) {
+        this.rank = rank;
+        return this;
+    }
+
+    public RankDotPrice setTireDot(TireDot tireDot) {
+        this.tireDot = tireDot;
+        return this;
+    }
+
+    public RankDotPrice update(RankDotPrice update) {
+        this.discountedPrice = update.discountedPrice;
+        return this;
+    }
 }

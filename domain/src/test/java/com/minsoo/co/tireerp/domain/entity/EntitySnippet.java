@@ -3,12 +3,16 @@ package com.minsoo.co.tireerp.domain.entity;
 import com.minsoo.co.tireerp.domain.constant.AccountRole;
 import com.minsoo.co.tireerp.domain.constant.PatternSeason;
 import com.minsoo.co.tireerp.domain.entity.admin.Admin;
+import com.minsoo.co.tireerp.domain.entity.client.Client;
+import com.minsoo.co.tireerp.domain.entity.client.ClientCompany;
 import com.minsoo.co.tireerp.domain.entity.management.Brand;
 import com.minsoo.co.tireerp.domain.entity.management.Pattern;
 import com.minsoo.co.tireerp.domain.entity.management.Vendor;
 import com.minsoo.co.tireerp.domain.entity.management.Warehouse;
 import com.minsoo.co.tireerp.domain.entity.purchase.Purchase;
 import com.minsoo.co.tireerp.domain.entity.purchase.PurchaseContent;
+import com.minsoo.co.tireerp.domain.entity.rank.Rank;
+import com.minsoo.co.tireerp.domain.entity.rank.RankDotPrice;
 import com.minsoo.co.tireerp.domain.entity.stock.Stock;
 import com.minsoo.co.tireerp.domain.entity.tire.Tire;
 import com.minsoo.co.tireerp.domain.entity.tire.TireDot;
@@ -253,6 +257,82 @@ public class EntitySnippet {
                 .email("test@test.com")
                 .phoneNumber("010-1234-5678")
                 .description("테스트 용도 관리자")
+                .build();
+    }
+
+    public static Rank rank() {
+        return Rank.builder()
+                .name("테스트 등급")
+                .description("테스트 용도 등급")
+                .build();
+    }
+
+    public static Rank rank2() {
+        return Rank.builder()
+                .name("테스트 등급2")
+                .description("테스트 용도 등급")
+                .build();
+    }
+
+    public static RankDotPrice rankDotPrice() {
+        return RankDotPrice.builder()
+                .rank(null)
+                .tireDot(null)
+                .discountedPrice(2000L)
+                .build();
+    }
+
+    public static RankDotPrice rankDotPrice2() {
+        return RankDotPrice.builder()
+                .rank(null)
+                .tireDot(null)
+                .discountedPrice(4000L)
+                .build();
+    }
+
+    public static ClientCompany clientCompany() {
+        return ClientCompany.builder()
+                .rank(null)
+                .name("테스트 고객사")
+                .description("테스트 용도 고객사")
+                .businessInfo(businessInfo())
+                .build();
+    }
+
+    public static ClientCompany clientCompany2() {
+        return ClientCompany.builder()
+                .rank(null)
+                .name("테스트 고객사2")
+                .description("테스트 용도 고객사")
+                .businessInfo(businessInfo())
+                .build();
+    }
+
+    public static Client client() {
+        return Client.builder()
+                .clientCompany(null)
+                .role(AccountRole.CLIENT)
+                .username("test")
+                .password("test")
+                .name("test_user")
+                .email("test@test.com")
+                .phoneNumber("010-1234-5678")
+                .description("테스트 용도 고객")
+                .address(address())
+                .build();
+    }
+
+    public static Client client2() {
+        return Client.builder()
+                .clientCompany(null)
+                .role(AccountRole.CLIENT)
+                .username("test2")
+                .password("test")
+                .name("test_user")
+                .email("test@test.com")
+                .phoneNumber("010-1234-5678")
+                .description("테스트 용도 고객")
+                .address(address())
                 .build();
     }
 }
