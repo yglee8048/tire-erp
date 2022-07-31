@@ -17,6 +17,8 @@ import com.minsoo.co.tireerp.domain.entity.rank.Rank;
 import com.minsoo.co.tireerp.domain.entity.rank.RankDotPrice;
 import com.minsoo.co.tireerp.domain.entity.sale.Delivery;
 import com.minsoo.co.tireerp.domain.entity.sale.Sale;
+import com.minsoo.co.tireerp.domain.entity.sale.SaleContent;
+import com.minsoo.co.tireerp.domain.entity.sale.SaleMemo;
 import com.minsoo.co.tireerp.domain.entity.stock.Stock;
 import com.minsoo.co.tireerp.domain.entity.tire.Tire;
 import com.minsoo.co.tireerp.domain.entity.tire.TireDot;
@@ -360,7 +362,7 @@ public class EntitySnippet {
                 .build();
     }
 
-    public static Delivery delivery(){
+    public static Delivery delivery() {
         return Delivery.builder()
                 .sale(null)
                 .recipientName("tester")
@@ -372,15 +374,39 @@ public class EntitySnippet {
                 .build();
     }
 
-    public static Delivery delivery2(){
-        return Delivery.builder()
+    public static SaleContent saleContent() {
+        return SaleContent.builder()
                 .sale(null)
-                .recipientName("tester2")
-                .address(address())
-                .recipientPhoneNumber("010-1234-5678")
-                .deliveryOption(DeliveryOption.PACKAGE)
-                .deliveryCompany("test company")
-                .invoiceNumber("1234-5678")
+                .stock(null)
+                .quantity(3)
+                .price(2000L)
+                .build();
+    }
+
+    public static SaleContent saleContent2() {
+        return SaleContent.builder()
+                .sale(null)
+                .stock(null)
+                .quantity(5)
+                .price(3000L)
+                .build();
+    }
+
+    public static SaleMemo saleMemo() {
+        return SaleMemo.builder()
+                .sale(null)
+                .memo("test")
+                .admin(false)
+                .lock(false)
+                .build();
+    }
+
+    public static SaleMemo saleMemo2() {
+        return SaleMemo.builder()
+                .sale(null)
+                .memo("test2")
+                .admin(false)
+                .lock(true)
                 .build();
     }
 }

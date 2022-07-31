@@ -68,12 +68,13 @@ public class Sale extends BaseEntity {
 
     public Sale setClientCompany(ClientCompany clientCompany) {
         this.clientCompany = clientCompany;
+        this.delivery = new Delivery(clientCompany);
         return this;
     }
 
-    public Sale update(Sale update, ClientCompany clientCompany, Delivery delivery) {
+    public Sale update(Sale update, ClientCompany clientCompany, Delivery deliveryUpdate) {
         this.clientCompany = clientCompany;
-        this.delivery = delivery;
+        this.delivery.update(deliveryUpdate);
         this.source = update.source;
         this.status = update.status;
         this.transactionDate = update.transactionDate;

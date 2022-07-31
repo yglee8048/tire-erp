@@ -3,6 +3,7 @@ package com.minsoo.co.tireerp.domain.entity.sale;
 import com.minsoo.co.tireerp.domain.constant.DeliveryOption;
 import com.minsoo.co.tireerp.domain.entity.Address;
 import com.minsoo.co.tireerp.domain.entity.BaseEntity;
+import com.minsoo.co.tireerp.domain.entity.client.ClientCompany;
 import lombok.*;
 
 import javax.persistence.*;
@@ -41,6 +42,17 @@ public class Delivery extends BaseEntity {
 
     @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
     private Sale sale;
+
+    public Delivery(ClientCompany clientCompany) {
+        if (clientCompany.getBusinessInfo() != null) {
+            this.recipientName = clientCompany.getBusinessInfo().getManager();
+            this.address = clientCompany.getBusinessInfo().getAddress();
+            this.recipientPhoneNumber = clientCompany.getBusinessInfo().getManagerPhoneNumber();
+        }
+        this.deliveryOption = null;
+        this.deliveryCompany = null;
+        this.invoiceNumber = null;
+    }
 
     public Delivery update(Delivery update) {
         this.recipientName = update.recipientName;

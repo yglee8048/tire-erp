@@ -29,9 +29,9 @@ public class SaleService {
                 .setClientCompany(clientCompany));
     }
 
-    public Sale update(Long id, Sale update, ClientCompany clientCompany, Delivery delivery) {
+    public Sale update(Long id, Sale update, ClientCompany clientCompany, Delivery deliveryUpdate) {
         return findById(id)
-                .update(update, clientCompany, delivery);
+                .update(update, clientCompany, deliveryUpdate);
     }
 
     public void deleteById(Long id) {
