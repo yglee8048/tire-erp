@@ -1,10 +1,10 @@
 package com.minsoo.co.tireerp.adminserver.model.response.tire;
 
 import com.minsoo.co.tireerp.domain.entity.tire.TireDot;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Data
+@Getter
 @NoArgsConstructor
 public class TireDotResponse {
 

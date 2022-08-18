@@ -55,4 +55,8 @@ public class TireResponse {
         this.createdBy = tire.getCreatedBy();
         this.lastModifiedBy = tire.getLastModifiedBy();
     }
+
+    public static TireResponse from(Tire tire) {
+        return new TireResponse(tire);
+    }
 }

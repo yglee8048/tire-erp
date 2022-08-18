@@ -1,11 +1,9 @@
 package com.minsoo.co.tireerp.adminserver.model.response.tire;
 
 import com.minsoo.co.tireerp.adminserver.model.TireInfoResponse;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
-import java.util.Objects;
 
 @Data
 @NoArgsConstructor
@@ -19,27 +17,12 @@ public class TireGridResponse {
 
     private Double averageOfPurchasePrice;
 
-    public TireGridResponse(TireInfoResponse tireInfo, List<TireDotGridResponse> tireDotInfos) {
+    @Builder
+    public TireGridResponse(TireInfoResponse tireInfo, Integer sumOfOpenedStock, Integer sumOfStock, Integer theNumberOfActiveDots, Double averageOfPurchasePrice) {
         this.tireInfo = tireInfo;
-        this.sumOfOpenedStock = tireDotInfos.stream()
-                .map(TireDotGridResponse::getSumOfOpenedStock)
-                .filter(Objects::nonNull)
-                .mapToInt(value -> value)
-                .sum();
-        this.sumOfStock = tireDotInfos.stream()
-                .map(TireDotGridResponse::getSumOfStock)
-                .filter(Objects::nonNull)
-                .mapToInt(value -> value)
-                .sum();
-        this.theNumberOfActiveDots = Long.valueOf(tireDotInfos.stream()
-                .map(TireDotGridResponse::getSumOfStock)
-                .filter(Objects::nonNull)
-                .filter(value -> value > 0)
-                .count()).intValue();
-        this.averageOfPurchasePrice = tireDotInfos.stream()
-                .map(TireDotGridResponse::getAverageOfPurchasePrice)
-                .filter(Objects::nonNull)
-                .mapToDouble(value -> value)
-                .average().orElse(0);
+        this.sumOfOpenedStock = sumOfOpenedStock;
+        this.sumOfStock = sumOfStock;
+        this.theNumberOfActiveDots = theNumberOfActiveDots;
+        this.averageOfPurchasePrice = averageOfPurchasePrice;
     }
 }

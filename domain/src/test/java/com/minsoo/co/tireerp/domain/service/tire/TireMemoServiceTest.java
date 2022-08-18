@@ -57,7 +57,7 @@ class TireMemoServiceTest {
 
         // when
         TireMemo create = tireMemoService.create(EntitySnippet.tireMemo(), tire);
-        TireMemo update = tireMemoService.update(create.getId(), EntitySnippet.tireMemo2(), tire);
+        TireMemo update = tireMemoService.update(create.getId(), EntitySnippet.tireMemo2());
 
         // then
         assertEquals(update.getMemo(), EntitySnippet.tireMemo2().getMemo());

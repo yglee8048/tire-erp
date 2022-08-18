@@ -1,5 +1,6 @@
 package com.minsoo.co.tireerp.adminserver.model.request.tire;
 
+import com.minsoo.co.tireerp.domain.entity.tire.TireMemo;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,4 +21,11 @@ public class TireMemoRequest {
     @Schema(name = "lock", description = "잠금 여부 (true=비공개/false=공개)", example = "true", required = true)
     @NotNull(message = "잠금 여부는 필수 값입니다.")
     private boolean lock;
+
+    public TireMemo toEntity() {
+        return TireMemo.builder()
+                .memo(this.memo)
+                .lock(this.lock)
+                .build();
+    }
 }

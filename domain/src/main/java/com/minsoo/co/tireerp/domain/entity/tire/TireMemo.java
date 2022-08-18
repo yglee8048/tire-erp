@@ -45,8 +45,7 @@ public class TireMemo extends BaseEntity {
         return this;
     }
 
-    public TireMemo update(TireMemo update, Tire tire) {
-        this.tire = tire;
+    public TireMemo update(TireMemo update) {
         this.memo = update.memo;
         this.lock = update.lock;
         return this;

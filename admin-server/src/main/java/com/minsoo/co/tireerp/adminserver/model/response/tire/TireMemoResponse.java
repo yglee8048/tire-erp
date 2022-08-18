@@ -31,4 +31,8 @@ public class TireMemoResponse {
         this.createdBy = tireMemo.getCreatedBy();
         this.lastModifiedBy = tireMemo.getLastModifiedBy();
     }
+
+    public static TireMemoResponse from(TireMemo tireMemo) {
+        return new TireMemoResponse(tireMemo);
+    }
 }

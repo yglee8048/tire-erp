@@ -1,6 +1,10 @@
 package com.minsoo.co.tireerp.adminserver.model;
 
 import com.minsoo.co.tireerp.domain.constant.PatternSeason;
+import com.minsoo.co.tireerp.domain.entity.management.Brand;
+import com.minsoo.co.tireerp.domain.entity.management.Pattern;
+import com.minsoo.co.tireerp.domain.entity.tire.Tire;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -49,4 +53,39 @@ public class TireInfoResponse {
     private LocalDateTime createdAt;
     private String lastModifiedBy;
     private LocalDateTime lastModifiedAt;
+
+    @Builder
+    public TireInfoResponse(Tire tire, Pattern pattern, Brand brand) {
+        this.tireId = tire.getId();
+        this.brandId = brand.getId();
+        this.brandName = brand.getName();
+        this.patternId = pattern.getId();
+        this.patternName = pattern.getName();
+        this.patternEnglishName = pattern.getEnglishName();
+        this.width = tire.getWidth();
+        this.flatnessRatio = tire.getFlatnessRatio();
+        this.inch = tire.getInch();
+        this.size = tire.getSize();
+        this.oe = tire.getOe();
+        this.loadIndex = tire.getLoadIndex();
+        this.speedIndex = tire.getSpeedIndex();
+        this.runFlat = tire.getRunFlat();
+        this.sponge = tire.getSponge();
+        this.sealing = tire.getSealing();
+        this.factoryPrice = tire.getFactoryPrice();
+        this.countryOfManufacture = tire.getCountryOfManufacture();
+        this.season = pattern.getSeason();
+        this.quietness = pattern.getQuietness();
+        this.rideQuality = pattern.getRideQuality();
+        this.mileage = pattern.getMileage();
+        this.handling = pattern.getHandling();
+        this.breakingPower = pattern.getBreakingPower();
+        this.wetSurface = pattern.getWetSurface();
+        this.snowPerformance = pattern.getSnowPerformance();
+        this.tireCode = tire.getTireCode();
+        this.createdBy = tire.getCreatedBy();
+        this.createdAt = tire.getCreatedAt();
+        this.lastModifiedBy = tire.getLastModifiedBy();
+        this.lastModifiedAt = tire.getLastModifiedAt();
+    }
 }

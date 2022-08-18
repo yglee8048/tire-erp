@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Slf4j
 @Service
 @Transactional
@@ -16,6 +18,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class TireMemoService {
 
     private final TireMemoRepository tireMemoRepository;
+
+    @Transactional(readOnly = true)
+    public List<TireMemo> findAllByTire(Tire tire) {
+        return tireMemoRepository.findAllByTire(tire);
+    }
 
     @Transactional(readOnly = true)
     public TireMemo findById(Long id) {
@@ -27,9 +34,9 @@ public class TireMemoService {
         return tireMemoRepository.save(create.setTire(tire));
     }
 
-    public TireMemo update(Long id, TireMemo update, Tire tire) {
+    public TireMemo update(Long id, TireMemo update) {
         return findById(id)
-                .update(update, tire);
+                .update(update);
     }
 
     public void deleteById(Long id) {

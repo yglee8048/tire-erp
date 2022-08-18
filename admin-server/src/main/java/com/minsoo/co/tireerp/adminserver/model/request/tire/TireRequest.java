@@ -1,5 +1,6 @@
 package com.minsoo.co.tireerp.adminserver.model.request.tire;
 
+import com.minsoo.co.tireerp.domain.entity.tire.Tire;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -73,4 +74,24 @@ public class TireRequest {
 
     @Schema(name = "country_of_manufacture", description = "제조국")
     private String countryOfManufacture;
+
+    public Tire toEntity(){
+        return Tire.builder()
+                .id(null)
+                .pattern(null)
+                .tireCode(this.tireCode)
+                .width(this.width)
+                .flatnessRatio(this.flatnessRatio)
+                .inch(this.inch)
+                .size(this.size)
+                .oe(this.oe)
+                .loadIndex(this.loadIndex)
+                .speedIndex(this.speedIndex)
+                .runFlat(this.runFlat)
+                .sponge(this.sponge)
+                .sealing(this.sealing)
+                .factoryPrice(this.factoryPrice)
+                .countryOfManufacture(this.countryOfManufacture)
+                .build();
+    }
 }
