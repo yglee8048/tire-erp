@@ -16,7 +16,6 @@ public class CustomerTireDotGridResponse {
     public CustomerTireDotGridResponse(TireDotGridResponse tireDotGridResponse) {
         this.tireDot = tireDotGridResponse.getTireDot();
 
-        this.price = tireDotGridResponse.getPrice();
 
         this.sumOfOpenedStock = tireDotGridResponse.getSumOfOpenedStock();
     }
